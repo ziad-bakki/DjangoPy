@@ -29,11 +29,11 @@ def main(request):
 
 
 def testing(request):
-    mymembers = Member.objects.all().values()
+    mymembers = Member.objects.all().order_by('-firstname').values()
     template = loader.get_template('template.html')
     context = {
         'mymembers': mymembers,
         'greeting': 1,
-        
+
     }
     return HttpResponse(template.render(context, request))
